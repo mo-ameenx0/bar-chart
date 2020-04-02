@@ -64,7 +64,7 @@ function main(){
 //Take the values from the second table.
 function enterValues(){
 	//zeros are inserted between values to make empty bars as a seperation
-	return [30,0,60,0,50];
+	return [30,0,100,0,50];
 }
 
 //Take the titles from the second table
@@ -131,9 +131,9 @@ function createBars(yAxisValues, values, max){
 	drawTheDiagram(bars);
 }
 
-//Append all the rows into the table.
+//Append all the rows into the drawingTable.
 function drawTheDiagram(bars){
-	var table = document.getElementById("table");
+	var table = document.getElementById("drawingTable");
 	var numberOfChilds = bars.length; 
 
 	var xAxisTitles = createTitlesRow();
@@ -229,13 +229,12 @@ function cellsSize(){
 	cellSize = 10
 	numberOfCellsOfEachBar = [1, 10, 5, 3, 4]
 */
-function numberOfCells(values, cellSize){
+function numberOfCells(values, cellHeight){
 	var numberOfCells = [];
 
 	for(i = 0; i < values.length; i++){
-		numberOfCells[i] = Math.floor(values[i]/cellSize);
+		numberOfCells[i] = Math.floor(values[i]/cellHeight);
 	}
 
 	return numberOfCells;
 }
-

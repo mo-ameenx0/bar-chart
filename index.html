@@ -3,14 +3,56 @@
 <head>
 	<title>BarChart</title>
 	<style type="text/css">
+		
 	</style>
 	<script src="script.js" type="text/javascript"></script>
 </head>
 
 <body>
-	<table id="table" cellspacing="0" cellpadding="0">
-	</table>	
 	
-	<input value="drawChart" type="button" name="drawChart" onclick="main()">	
+	<div id="top">
+		<!-- DONT'T ADD ANYTHING TO THIS TABLE -->
+		<div id="middle">
+			<table id="drawingTable" cellspacing="0" cellpadding="0"></table>
+		</div>	
+	</div>
+	
+	
+	<input value="drawChart" type="button" name="drawChart" onclick="main()">
+
+	<!-- THIS TABLE TO CONTROL THE PROGRAM -->
+	<!-- The ID is used to update the columns when the user delete a column -->
+	<div id="bottom">
+		<table id="dataTable">
+			<thead>
+				<th>VALUES</th>
+				<th>TITLES</th>
+				<th>DELETE</th>
+			</thead>
+
+			<tr id="0">
+				<!-- VALUES COLUMN -->
+				<td>
+					<input type="number" name="value">
+				</td>
+
+				<!-- TITLES COLUMN -->
+				<td>
+					<input type="text" name="title">
+				</td>
+
+				<!-- DELETE COLUMN -->
+				<td>
+					<input value="DELETE" type="button" name="delete">
+				</td>
+			</tr>
+
+			<tr id="newSlot">
+				<td colspan="3">
+					<input value="Add New Value" type="button" name="addNewSlot">
+				</td>
+			</tr>
+		</table>	
+	</div>
 </body>
 </html>

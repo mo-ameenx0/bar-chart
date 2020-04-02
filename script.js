@@ -41,7 +41,7 @@
 */
 
 function main(){
-	let values = [10,60,50,33,40];
+	let values = [10,60,50,33,40,10,5];
 	let titles = ["val1", "val2", "val3", "val4", "val5"];
 	
 	var max = findMax(values);
@@ -64,7 +64,8 @@ function main(){
 }
 
 function drawBarChart(yAxisValues, values, max){
-	var table = document.getElementById("table");
+	//var table = document.getElementById("table");
+	var bars = [];
 	
 	var colors = generateColors(values.length);
 	var cellsSize = cellSize();
@@ -76,6 +77,7 @@ function drawBarChart(yAxisValues, values, max){
 
 	for(rows = 0; rows < numberOfRows; rows++){
 		row = document.createElement("tr");
+		row.setAttribute("id", rows);
 
 		for(columns = 0; columns < numberOfColumns; columns++){
 			color = "rgb("+colors[columns][0]+","+colors[columns][1]+","+colors[columns][2]+")";
@@ -111,18 +113,21 @@ function drawBarChart(yAxisValues, values, max){
 				row.appendChild(emptyTableData)
 			}
 		}
-		table.appendChild(row);
+		bars[rows] = row;
+		//table.appendChild(row);
 	}
 
-	inverseTheDiagram(table);
+	inverseTheDiagram(bars);
 }
 
-function inverseTheDiagram(table){
-	var numberOfChilds = table.childElementCount;
-	
-	var firstElement = table.childNodes[1];
-	var lastElement = table.childNodes[numberOfChilds];
-	
+function inverseTheDiagram(bars){
+	var table = document.getElementById("table");
+	var numberOfChilds = bars.length; 
+
+	for(i = numberOfChilds - 1; i >= 0; i--){
+		console.log(numberOfChilds);
+		table.appendChild(bars[i]);
+	}
 }
 
 //This method find the max value in the entered values
@@ -173,7 +178,7 @@ function cellSize(){
 	*/
 
 	//Number of rows(number of cells) = Math.floor(max/cellSize)
-	return 10;
+	return 5;
 }
 
 /*
